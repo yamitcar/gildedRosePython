@@ -9,6 +9,12 @@ class GildedRose(object):
     def __init__(self, items):
         self.items = items
 
+    def __enter__(self):
+        return self
+
+    def __exit__(self, type, value, traceback):
+        pass
+
     def update_quality(self):
         for item in self.items:
             if item.name != self.AGED_BRIE and item.name != self.BACKSTAGE:
@@ -50,3 +56,9 @@ class Item:
 
     def __repr__(self):
         return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, type, value, traceback):
+        pass
